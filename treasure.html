@@ -18,6 +18,8 @@
     <p id="score" style="padding-left: 5rem;color:coral;">Score is unknown</p>
     <p id="help" style="padding-left: 5rem;color: green;">Help report</p>
     <p id="lastcheck" style="padding-left: 5rem; background-color:yellowgreen">Last check</p>
+    <button type="button" style="text-align: center; justify-content: right;" class="btn btn-success" onclick="reset()">Reset</button>
+    <p></p>
     <div class="row" style="padding-left: 5rem;">
         <div class="col-md-2"><img src="treasure.jpg" alt="treasure hunt" style="width:100px;height:100px" id="0" onclick="check(0)"></div>
         <div class="col-md-2"><img src="treasure.jpg" alt="treasure hunt" style="width:100px;height:100px" id="1" onclick="check(1)"></div>
@@ -98,6 +100,21 @@
             }
             else
                 document.getElementById("help").innerHTML = "Sorry, no help available"
+        }
+        function reset()
+        {
+            treasureLocation = Math.floor(Math.random()*25)
+            while(treasureLocation == 12)
+            {
+                treasureLocation = Math.floor(Math.random()*25)
+            }
+            chestCount = 0
+            score = 0
+            document.getElementById("chests").innerHTML = "Number of chests checked is zero"
+            document.getElementById("score").innerHTML = "Score is unknown"
+            for(let i=0;i<25;i++)
+                if(i != 12)
+                    document.getElementById(ids[i]).src = "emptytreasure.jpg"
         }
     </script>
 </body>
